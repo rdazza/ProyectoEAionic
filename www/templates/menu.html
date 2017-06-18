@@ -1,0 +1,43 @@
+<ion-side-menus enable-menu-with-back-views="false" ng-init="init()">
+
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button></ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle=""></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="side-menu21"></ion-nav-view>
+  </ion-side-menu-content>
+  <ion-side-menu side="left" class="app-sidebar color" ng-click="seeProfile()">
+    <div class="row app-sidebar-profile-box profile-colors">
+      <div class="col col-25">
+        <img ng-src="{{player.imageUrl}}" class="img-circle" width=65&height=65;">
+        <!--<img src="http://graph.facebook.com/{{user.id}}/picture?width=270&height=270" />-->
+      </div>
+      <div class="row">
+      <div class="col-65 col-offset-10">
+        <div>
+          <font color="white" class="title">{{player.nombre}} {{player.apellidos}}</font></div>
+        <div>
+          <font color="white" class="title">{{player.email}}</font></div>
+      </div>
+    </div>
+
+
+    </div>
+            <ion-list >
+                <ion-item  class="itemMenu" ui-sref="menu.torneos" menu-close="">Torneos</ion-item>
+                <ion-item  class="itemMenu" ui-sref="menu.reservas" menu-close="">Añadir Reserva</ion-item>
+                <ion-item  class="itemMenu" ui-sref="menu.misreservas" menu-close="">Mis Reservas</ion-item>
+                <ion-item  class="itemMenu" ui-sref="menu.mistorneos" menu-close="">Mis Torneos</ion-item>
+                <ion-item  class="itemMenu" ui-sref="menu.close">Cerrar Sesion</ion-item>
+            </ion-list>
+  </ion-side-menu>
+</ion-side-menus>
+<style>
+  .img-circle{
+    border-radius: 50%
+  }
+</style>
+

@@ -1,0 +1,49 @@
+<ion-header-bar class="bar-light">
+  <ion-header-back-button ng-click="goBack()" class="button icon-left ion-chevron-left button-clear button-dark">Back</ion-header-back-button>
+  <div class="title">Editar</div>
+</ion-header-bar>
+<ion-content class="padding" style="background-color: burlywood">
+  <div class="list">
+  </div>
+  <div class="list card padding">
+    <label class="item item-input">
+      <input type="text" placeholder="Nombre" {{player.nombre}} ng-model="player.nombre">
+    </label>
+    <label class="item item-input">
+      <input type="text" placeholder="Apellidos" {{player.apellidos}} ng-model="player.apellidos">
+    </label>
+    <label class="item item-input">
+      <input type="text" placeholder="DNI/NIE" {{player.dni}} ng-model="player.dni">
+    </label>
+    <label class="item item-input">
+      <input type="text" placeholder="Fecha Nacimiento" {{player.birthday}} ng-model="player.birthday">
+    </label>
+    <label class="item item-input">
+      <input type="email" placeholder="Email" {{.email}} ng-model="player.email">
+    </label>
+
+    <br>
+    </div>
+    <label class="item item-input">
+      <input type="tel" placeholder="Teléfono" ng-model="player.phone">
+    </label>
+
+    <div class="button-bar social-login">
+      <button class="button button-calm button-block" ng-click="editUser()" ng-disabled="!player.nombre || !player.apellidos || !player.email || !player.birthday || !player.dni">Actualizar Perfil</button>
+    </div>
+    <br><br>
+
+  </div>
+</ion-content>
+</ion-view>
+<script id="my-modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title" align="center">Actualizar Foto Perfil</h1>
+    </ion-header-bar>
+    <ion-content>
+      <button class="button button-full button-positive" ng-click="addMedia()">Elige Foto Perfil (Opcional)</button>
+      <button class="button button-full buttom-assertive" ng-click="closeRegister()">Cancel</button>
+    </ion-content>
+  </ion-modal-view>
+</script>

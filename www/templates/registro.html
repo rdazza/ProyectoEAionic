@@ -1,0 +1,41 @@
+<ion-header-bar class="bar-light">
+  <ion-header-back-button ng-click="goBack()" class="button icon-left ion-chevron-left button-clear button-dark">Back</ion-header-back-button>
+  <div class="title">Registrarse</div>
+</ion-header-bar>
+<ion-content class="padding" style="background-color: #009689">
+  <div class="list">
+  </div>
+    <div class="list card padding">
+      <label class="item item-input">
+        <input type="text" placeholder="Nombre" ng-model="user.nombre">
+      </label>
+      <label class="item item-input">
+      <input type="text" placeholder="Apellidos" ng-model="user.apellidos">
+      </label>
+
+      <label class="item item-input">
+        <input type="text" placeholder="DNI/NIE" ng-model="user.dni">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Teléfono (Opcional)" ng-model="user.phone">
+      </label>
+
+      <label class="item item-input">
+        <input type="email" placeholder="Email" ng-model="user.email">
+      </label>
+      <label class="item item-input">
+        <input type="text" placeholder="Fecha nacimiento" ng-model="user.birthday">
+      </label>
+      <label class="item item-input">
+        <input type="password" placeholder="Password" ng-model="user.password">
+      </label>
+      <br>
+
+      </div>
+
+      <div class="button-bar social-login">
+        <button class="button button-danger button-block" ng-click="registerUser()" ng-disabled="!user.nombre || !user.apellidos || !user.dni || !user.birthday || !user.email || !user.password">Registrar</button>
+      </div>
+      <br><br>
+</ion-content>
+

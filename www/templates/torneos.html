@@ -1,0 +1,18 @@
+
+<ion-view title="Torneos">
+  <ion-content padding="'true'" class="has-header">
+    <ion-list ng-click="showPopup(torneo)" ng-repeat="torneo in torneos">
+      <ion-item menu-close="" class="item-thumbnail-left">
+        <img ng-src="img/cup.png">
+        <strong> {{torneo.nombre}}</strong>
+        <p ng-if="torneo.participantes>0">Participantes: {{torneo.participantes}}</p>
+        <p ng-if="torneo.participantes.length>0">Participantes: {{torneo.participantes.length}}</p>
+        <p ng-if="torneo.participantes.length==0">Participantes: {{torneo.participantes.length}}</p>
+        <p>Fecha creacion: {{torneo.fecha}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+<script id="registro-torneo.html" type="text/ng-template">
+  <label ng-show="showAlert"style="display: block;text-align: center;color: red">{{alert}}</label>
+</script>

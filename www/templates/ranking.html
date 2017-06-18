@@ -1,0 +1,29 @@
+<style>
+  .header-1 .col {
+    background-color: dodgerblue;
+  }
+
+
+</style>
+<ion-header-bar class="bar-positive">
+  <ion-header-back-button ng-click="goBack()" class="button icon-left ion-chevron-left button-clear button-dark">Back</ion-header-back-button>
+  <div class="title">Clasificacion</div>
+</ion-header-bar>
+<ion-content class="padding">
+    <div class="row header-1">
+      <div class="col">Pos</div>
+      <div class="col col-25">Nombre</div>
+      <div class="col col-25">Apellidos</div>
+      <div class="col">Puntuacion</div>
+    </div>
+    <div ng-repeat="ranking in rankings | orderBy: '-resultado'" class="row">
+      <div class="col ">{{$index+1}}</div>
+      <div class="col col-25">{{ranking.nombre}}</div>
+      <div class="col col-25">{{ranking.apellidos}}</div>
+      <div class="col">{{ranking.resultado}}</div>
+    </div>
+
+
+  </ion-content>
+
+

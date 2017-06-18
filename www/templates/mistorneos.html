@@ -1,0 +1,14 @@
+<ion-view title="Mis Torneos">
+  <ion-content padding="'true'" class="has-header">
+    <ion-list ng-repeat="torneo in torneos">
+      <ion-item ng-click="goRanking(torneo)"menu-close="" class="item-thumbnail-left">
+        <img ng-src="img/cup.png">
+        <strong> {{torneo.nombre}}</strong>
+        <p ng-if="torneo.participantes>0">Participantes: {{torneo.participantes}}</p>
+        <p ng-if="torneo.participantes.length>0">Participantes: {{torneo.participantes.length}}</p>
+        <p ng-if="torneo.participantes.length==0">Participantes: {{torneo.participantes.length}}</p>
+        <p>Dia la reserva: {{torneo.fecha}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

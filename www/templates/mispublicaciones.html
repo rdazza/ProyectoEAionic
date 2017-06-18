@@ -1,0 +1,65 @@
+<style>
+
+  body {
+    cursor: url('http://ionicframework.com/img/finger.png'), auto;
+  }
+
+  /* allows the bar-footer to be elastic /*
+  /* optionally set a max-height */
+  /* maxlength on the textarea will prevent /*
+  /* it from getting too large also */
+  .bar-footer {
+    overflow: visible !important;
+  }
+
+  .bar-footer textarea {
+    resize: none;
+    height: 25px;
+  }
+
+
+  .bar.item-input-inset .item-input-wrapper input {
+    width: 100% !important;
+  }
+
+
+  input, textarea, .item-input, .item-input-wrapper {
+    background-color: #f4f4f4 !important;
+  }
+
+
+</style>
+
+<ion-header-bar class="bar-positive">
+  <ion-header-back-button ng-click="goBack()" class="button icon-left ion-chevron-left button-clear button-dark">Back</ion-header-back-button>
+  <div class="title">Publicaciones</div>
+</ion-header-bar>
+
+<ion-content padding="'true'">
+
+  <ion-list ng-repeat="release in releases">
+    <ion-item menu-close="" class="item-thumbnail-left">
+      <img src={{release.sender.imageUrl}}  width="40%" height="120" style="width: 40%; height: 120px;">
+      <p> {{ release.sender.name }} publico el dia {{ release.createdAt | date: "dd/MM/yyyy" }}</p>
+      <pre style="color:darkcyan">{{release.text}}</pre>
+      <button class="button button-small button-light" ng-click="goComments(release._id)"type="submit">Comentarios
+      </button>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>
+<form name="sendMessageForm" ng-submit="sendMessage(sendMessageForm)" novalidate>
+  <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+    <label class="item-input-wrapper">
+        <textarea ng-model="text" value="" placeholder="Escribe algo..." rows="8" cols="150000"></textarea>
+    </label>
+
+    <div>
+      <button class="button button-block button-positive activated" type="submit">Publicar
+      </button>
+    </div>
+  </ion-footer-bar>
+</form>
+
+

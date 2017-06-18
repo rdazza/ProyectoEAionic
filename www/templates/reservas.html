@@ -1,0 +1,23 @@
+
+<ion-view title="Reservas">
+  <ion-content padding="'true'" class="has-header">
+    <label class="col-lg-2">Numero Participantes (1-20)</label>
+      <div class="col-lg-1">
+        <input type="number" min="0" max="20"
+               ng-model="nplayers">
+      </div>
+    <label class="col-lg-8 control-label">Elige un dia para la reserva</label>
+    <div ng-repeat="day_reg in days_reg" class="form-group">
+      <div class="col-lg-2 control-label pure-checkbox">
+        <input id="checkbox{{$index}}" name="checkbox" type="checkbox" ng-click="updateSelection($index,!day_reg.checked)" ng-checked=day_reg.checked>
+        <label for="checkbox{{$index}}"></label>
+      </div>
+      <div class="col-lg-6">
+        <span for="nombre" class="col-lg-2 control-label">{{day_reg | date:"MM/dd/yyyy"}}</span><br>
+      </div>
+    </div>
+
+    <button class="button button-danger button-block" ng-click="addReserva(nplayers)" ng-disabled="!nplayers || !checked">Reservar</button>
+
+    <br><br>
+  </ion-content>

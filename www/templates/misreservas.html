@@ -1,0 +1,12 @@
+
+<ion-view title="Mis Reservas">
+  <ion-content padding="'true'" class="has-header">
+    <ion-list ng-repeat="reserva in reservas">
+      <ion-item>
+        <strong>Reserva {{$index+1}}</strong>
+        <p>Participantes: {{reserva.participantes}}</p>
+        <p>Fecha de la reserva: {{reserva.fecha | date:"MM/dd/yyyy"}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,12 @@
+<ion-view title="Solicitudes">
+  <ion-content padding="'true'" class="has-header">
+    <ion-list ng-click="getStudent(user.request._id)" ng-repeat="user in users">
+      <ion-item menu-close="" class="item-thumbnail-left">
+        <img src={{user.request.imageUrl}}  width="40%" height="120" style="width: 40%; height: 120px;">
+        <strong> {{user.request.name}}</strong>
+        <p style="color:darkcyan"> {{user.request.username}}</p>
+        <p>{{user.request.college}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
