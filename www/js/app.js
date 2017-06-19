@@ -5,7 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-var _base = "http://localhost:3000";
+//var _base = "http://localhost:3000";
+var _base = "http://172.20.10.2:3000";
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'ngCordovaOauth','ngCordova','ngStorage'])
 
   .run(function ($ionicPlatform, $rootScope, $ionicLoading, $location, $timeout) {
@@ -53,6 +54,9 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
     },
     signup: function (user) {
       return $http.post(_base + '/users/adduser', user);
+    },
+    signup_oauth: function (user) {
+      return $http.post(_base + '/users/register-oauth', user);
     },
     editUser: function (user) {
       return $http.put(_base + '/users/' + $rootScope.idplayer, user);
@@ -122,8 +126,46 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
         }
       }).then(function (result) {
         console.log (result)
+        var nb = result.data.name;
+        var name = nb.split(/\s+/g);
+        console.log(name)
+        if (result.data.email==null){
+          var idprov= result.data.id.substring(0, 3);
+          result.data.email= name[0]+name[1]+idprov+"@upc.es"
+          result.data.email = result.data.email.toLowerCase()
+        }
+        var player = {
+          email: result.data.email,
+          password: 'soytorbe',
+          apellidos: name[1],
+          nombre: name[0],
+          imageUrl: "https://graph.facebook.com/" + result.data.id + "/picture?type=large",
+          idProvider: result.data.id,
+        }
+
+        api.signup_oauth(player).success(function (result) {
+          console.log(result)
+          $scope.login = {
+            email: result.email,
+            password: 'soytorbe'
+          }
+          $scope.loginUser($scope.userLogin);
+        }).error(function (data, status) {
+          $rootScope.hideLoading()
+          if (status != 0) {
+            $scope.userLogin = {
+              email: data.email,
+              password: 'soytorbe'
+            };
+            $scope.loginUser($scope.userLogin);
+          }
+          else {
+
+
+          }
+        })
       }, function (error) {
-        alert("There was a problem getting your profile.  Check the logs for details.");
+        console.log("There was a problem getting your profile.  Check the logs for details.");
       });
 
     }
@@ -338,7 +380,15 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
 
   api.getReservas().success(function (data) {
     console.log (data)
+    data= data.filter(function(obj){
+      console.log(obj.nombre)
+      return obj.nombre._id==$rootScope.idplayer;
+
+    })
+
+
     $scope.reservas =data;
+
 
   }).error(function (data) {
   })
